@@ -1,5 +1,5 @@
 import { SingleSigTemplate, TemplateRegistry } from '@spacemesh/sm-codec';
-import Bech32 from '@spacemesh/address-wasm';
+import { bech32 } from 'bech32';
 import { HexString, fromHexString } from 'src/utils';
 import crypto from 'crypto';
 
@@ -32,7 +32,7 @@ export const SendTransaction = (
   });
   const payload = {
     Arguments: {
-      Destination: Bech32.parse(receiver),
+      Destination: Uint8Array.from(bech32.decode(receiver).words),
       Amount: BigInt(amount),
     },
     Nonce: BigInt(nonce || 1),

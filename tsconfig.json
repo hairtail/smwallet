@@ -10,13 +10,13 @@
     "alwaysStrict": true,
     "strict": true,
     "strictPropertyInitialization": false,
-    "target": "ES6",
+    "target": "ES2022",
     "sourceMap": true,
     "incremental": true,
     "outDir": "./lib",
     "baseUrl": "./",
     "allowJs": true,
-    "lib": ["ES6"]
+    "lib": ["ES2022"]
   },
   "include": ["src"],
   "exclude": ["node_modules"]
