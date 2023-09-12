@@ -12,7 +12,7 @@ interface State {
 }
 
 export interface AccountStatus {
-  aaccountWrapper: {
+  accountWrapper: {
     accountId: AccountId;
     stateCurrent: State;
     stateProjected: State;
