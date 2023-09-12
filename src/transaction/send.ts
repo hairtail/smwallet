@@ -1,6 +1,6 @@
 import { SingleSigTemplate, TemplateRegistry } from '@spacemesh/sm-codec';
 import { bech32 } from 'bech32';
-import { HexString, fromHexString } from 'src/utils';
+import { HexString, fromHexString } from '../account/utils';
 import crypto from 'crypto';
 
 export const sign = (dataBytes: Uint8Array, privateKey: HexString) => {

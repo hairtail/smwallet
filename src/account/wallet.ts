@@ -1,5 +1,5 @@
 import { generateMnemonic, mnemonicToSeedSync, validateMnemonic } from 'bip39';
-import { toHexString } from '../utils';
+import { toHexString } from './utils';
 import Bip32KeyDerivation from './bip32-key-der';
 
 export class Wallet {

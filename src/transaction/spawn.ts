@@ -1,5 +1,5 @@
 import { SingleSigTemplate, TemplateRegistry } from '@spacemesh/sm-codec';
-import { fromHexString } from 'src/utils';
+import { fromHexString } from '../account/utils';
 import { sign } from './send';
 
 export const SpawnTransaction = (
