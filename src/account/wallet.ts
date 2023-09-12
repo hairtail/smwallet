@@ -2,7 +2,7 @@ import { generateMnemonic, mnemonicToSeedSync, validateMnemonic } from 'bip39';
 import { toHexString } from '../utils';
 import Bip32KeyDerivation from './bip32-key-der';
 
-class Wallet {
+export class Wallet {
   static generateMnemonice = () => generateMnemonic();
 
   static createWallet = (mnemonic: string, walletIndex = 0) => {
@@ -36,5 +36,3 @@ class Wallet {
     return validateMnemonic(mnemonic);
   };
 }
-
-export default Wallet;
