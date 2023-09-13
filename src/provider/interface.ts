@@ -43,3 +43,7 @@ export interface TransactionResponse {
   transactionsState: TransactionState[];
   transactions: Transaction[];
 }
+
+export interface GenesisID {
+  genesisId: string;
+}

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { AccountStatus, TransactionResponse } from './interface';
+import { AccountStatus, GenesisID, TransactionResponse } from './interface';
 
 const API_VERSION = 'v1';
 
@@ -19,7 +19,9 @@ export class RpcCaller {
   }
 
   async submitTransaction(signed: string) {
-    return await this.call('transaction/submittransaction', signed);
+    return await this.call('transaction/submittransaction', {
+      transaction: signed,
+    });
   }
 
   // base64 encoded id
@@ -28,6 +30,10 @@ export class RpcCaller {
       'transaction/transactionsstate',
       { transactionId: [{ id }], includeTransactions: true },
     );
+  }
+
+  async genesisID() {
+    return await this.call<GenesisID>('mesh/genesisid', {});
   }
 
   async call<T>(

@@ -16,7 +16,7 @@ export const sign = (dataBytes: Uint8Array, privateKey: HexString) => {
   return Uint8Array.from(crypto.sign(null, dataBytes, pk));
 };
 
-export const SendTransaction = (
+export const sendTransaction = (
   publicKey: string,
   secretKey: string,
   receiver: string,

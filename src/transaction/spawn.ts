@@ -2,7 +2,7 @@ import { SingleSigTemplate, TemplateRegistry } from '@spacemesh/sm-codec';
 import { fromHexString } from '../account/utils';
 import { sign } from './send';
 
-export const SpawnTransaction = (
+export const spawnTransaction = (
   publicKey: string,
   secretKey: string,
   fee: number,
