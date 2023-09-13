@@ -1,6 +1,8 @@
 import { generateMnemonic, mnemonicToSeedSync, validateMnemonic } from 'bip39';
-import { toHexString } from './utils';
+import { fromHexString, toHexString } from './utils';
 import Bip32KeyDerivation from './bip32-key-der';
+import { SingleSigTemplate, TemplateRegistry } from '@spacemesh/sm-codec';
+import Bech32 from '@spacemesh/address-wasm';
 
 export class Wallet {
   static generateMnemonice = () => generateMnemonic();
@@ -29,10 +31,18 @@ export class Wallet {
     return Wallet.createWallet(mnemonic, index);
   };
 
-  validateMnemonic = ({ mnemonic }: { mnemonic: string }) => {
+  static validateMnemonic = ({ mnemonic }: { mnemonic: string }) => {
     if (!mnemonic || !mnemonic.length) {
       return false;
     }
     return validateMnemonic(mnemonic);
+  };
+
+  static encodeAddress = (publicKey: string) => {
+    const pkBytes = fromHexString(publicKey);
+    const tpl = TemplateRegistry.get(SingleSigTemplate.key, 0);
+    const principal = tpl.principal({ PublicKey: pkBytes });
+    const address = Bech32.generateAddress(principal);
+    return address;
   };
 }

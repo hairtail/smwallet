@@ -1,7 +1,7 @@
 import { SingleSigTemplate, TemplateRegistry } from '@spacemesh/sm-codec';
-import { bech32 } from 'bech32';
 import { HexString, fromHexString } from '../account/utils';
 import crypto from 'crypto';
+import Bech32 from '@spacemesh/address-wasm';
 
 export const sign = (dataBytes: Uint8Array, privateKey: HexString) => {
   const key = Buffer.concat([
@@ -32,7 +32,7 @@ export const SendTransaction = (
   });
   const payload = {
     Arguments: {
-      Destination: Uint8Array.from(bech32.decode(receiver).words),
+      Destination: Bech32.parse(receiver),
       Amount: BigInt(amount),
     },
     Nonce: BigInt(nonce || 1),
