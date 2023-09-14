@@ -36,6 +36,12 @@ export class RpcCaller {
     return await this.call<GenesisID>('mesh/genesisid', {});
   }
 
+  async accountMeshDataQuery(address: string) {
+    return await this.call('mesh/accountmeshdataquery', {
+      filter: { account_id: { address }, account_mesh_data_flags: 1 },
+    });
+  }
+
   async call<T>(
     method: string,
     params: any,
