@@ -1,5 +1,10 @@
 import axios from 'axios';
-import { AccountStatus, GenesisID, TransactionResponse } from './interface';
+import {
+  AccountMeshQueryResponse,
+  AccountStatus,
+  GenesisID,
+  TransactionResponse,
+} from './interface';
 
 const API_VERSION = 'v1';
 
@@ -37,9 +42,12 @@ export class RpcCaller {
   }
 
   async accountMeshDataQuery(address: string) {
-    return await this.call('mesh/accountmeshdataquery', {
-      filter: { account_id: { address }, account_mesh_data_flags: 1 },
-    });
+    return await this.call<AccountMeshQueryResponse>(
+      'mesh/accountmeshdataquery',
+      {
+        filter: { account_id: { address }, account_mesh_data_flags: 1 },
+      },
+    );
   }
 
   async call<T>(

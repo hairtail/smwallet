@@ -47,3 +47,13 @@ export interface TransactionResponse {
 export interface GenesisID {
   genesisId: string;
 }
+
+interface MeshTransaction {
+  transaction: Transaction;
+  layerId: { number: number };
+}
+
+export interface AccountMeshQueryResponse {
+  data: MeshTransaction[];
+  totalResults: number;
+}
